@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Enrollment system</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container"> 
+        <h1>Add new student</h1> 
+        <form th:action ="@{/Persons}" th:object="${person}" method="post">
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label mt-4">First name</label>
+                        <input class="form-control" type="text" name="name" th:field="*{name}"  placeholder="Enter first name"><br/>
+                    </div>
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label mt-4">Last name</label>
+                        <input  class="form-control" type="text" name="surname" th:field="*{surname}"  placeholder="Enter surname"><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label">City</label>
+                        <input  class="form-control" type="text" name="city" th:field="*{city}"  placeholder="Enter city"><br/>
+                    </div>
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label">Address</label>
+                            <input  class="form-control" type="text" name="address" th:field="*{address}"  placeholder="Enter address"><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label">Phone</label>
+                        <input  class="form-control" type="text" name="city" th:field="*{phone}"  placeholder="Enter phone"><br/>
+                    </div>
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label">Birthdate</label>
+                            <input  class="form-control" type="date" name="birthdate" th:field="*{birthdate}" placeholder="10.1.1999"><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <fieldset>
+                <legend class="mt-4">Gender</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="genderRadios1" th:value="'F'" checked="1">
+                    <label class="form-check-label" for="genderRadios1">
+                    Female
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="genderRadios2" th:value="'M'">
+                    <label class="form-check-label" for="genderRadios2">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" th:field="*{gender}" id="genderRadios3" th:value="'O'">
+                    <label class="form-check-label" for="genderRadios3">
+                        Other
+                    </label>
+                </div>
+            </fieldset>
+            </div>
+            <div class="col-xs-12 col-6">
+            <fieldset>
+                <legend class="mt-4">Role</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" th:field="*{role}" id="roleRadios1" th:value="'teacher'" checked="">
+                    <label class="form-check-label" for="roleRadios1">
+                        Teacher
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="role" th:field="*{role}" id="roleRadios2" th:value="'student'">
+                    <label class="form-check-label" for="roleRadios2">
+                        Student
+                    </label>
+                </div>
+               
+            </fieldset>
+        </div></div>
+            </div>
+            <br/>
+            <button class="btn btn-danger" type="submit">Add new person </button>
+        </form>
+    </div>
+</body>
+</html>
