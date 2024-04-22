@@ -19,8 +19,6 @@ public class Person {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="ssn", nullable = false)
-    private String ssn;
     
     @Column(name="name", nullable = false)
     private String name;
@@ -46,10 +44,9 @@ public class Person {
     @Column(name="role", nullable = false)
     private Role role;
 
-    public Person(Long id, String ssn, String name, String surname, String city, String address, String phone,
+    public Person(Long id,  String name, String surname, String city, String address, String phone,
     Date birthdate, Gender gender, Role role) {
         this.id = id;
-        this.ssn = ssn;
         this.name = name;
         this.surname = surname;
         this.city = city;
@@ -62,9 +59,7 @@ public class Person {
     public Long getId() {
         return id;
     }
-    public String getSsn() {
-        return ssn;
-    }
+
     public String getName() {
         return name;
     }
@@ -116,9 +111,6 @@ public class Person {
     }
     public void setRole(Role role) {
         this.role = role;
-    }
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
     }
     public void setSurname(String surname) {
         this.surname = surname;

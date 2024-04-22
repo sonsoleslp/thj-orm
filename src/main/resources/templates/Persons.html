@@ -5,8 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Enrollment system</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/solar/bootstrap.min.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
 </head>
 <body>
     <div class="container"> 
@@ -16,7 +15,6 @@
             <thead>
                 <tr>
                     <th>ID Number</th>
-                    <th>SSN</th>
                     <th>First Name</th>
                     <th>Last name</th>
                     <th>City</th>
@@ -31,7 +29,6 @@
                 <tr th:each = "person: ${Persons}">
 
                     <td th:text="${person.id}"></td>
-                    <td th:text="${person.ssn}"></td>
                     <td th:text="${person.name}"></td>
                     <td th:text="${person.surname}"></td>
                     <td th:text="${person.city}"></td>
