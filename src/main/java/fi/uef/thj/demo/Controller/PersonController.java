@@ -1,5 +1,4 @@
 package fi.uef.thj.demo.Controller;
-// https://www.youtube.com/watch?v=f5pCihgnRi8
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
