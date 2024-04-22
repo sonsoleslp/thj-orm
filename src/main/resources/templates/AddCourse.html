@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Enrollment system</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container"> 
+        <h1>Add new student</h1> 
+        <form th:action ="@{/Courses}" th:object="${course}" method="post">
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label mt-4">Name</label>
+                        <input class="form-control" type="text" name="name" th:field="*{name}"  placeholder="Enter first name"><br/>
+                    </div>
+                    <div class="col-xs-12 col-6">
+                        <label class="form-label mt-4">Credits</label>
+                        <input  class="form-control" type="number" name="surname" th:field="*{credits}"  placeholder="Enter credit numbers"><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-6">
+                        <fieldset>
+                <legend class="mt-4">Type</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" th:field="*{type}" id="typeRadios1" th:value="'mandatory'" checked="1">
+                    <label class="form-check-label" for="typeRadios1">
+                    Mandatory
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" th:field="*{type}" id="typeRadios2" th:value="'basic'">
+                    <label class="form-check-label" for="typeRadios2">
+                        Basic
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="type" th:field="*{type}" id="typeRadios3" th:value="'elective'">
+                    <label class="form-check-label" for="typeRadios3">
+                        Elective
+                    </label>
+                </div>
+            </fieldset>
+            </div>
+            </div>
+            </div>
+            <br/>
+            <button class="btn btn-danger" type="submit">Add new course </button>
+            <a href="/"><button type="button" class="btn btn-info">Go back</button></a>
+        </form>
+    </div>
+</body>
+</html>

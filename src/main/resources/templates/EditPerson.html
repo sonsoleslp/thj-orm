@@ -10,8 +10,8 @@
 </head>
 <body>
     <div class="container"> 
-        <h1>Add new student</h1> 
-        <form th:action ="@{/Persons}" th:object="${person}" method="post">
+        <h1>Edit person</h1> 
+        <form th:action ="@{/Persons/{id} (id=${person.id})}" th:object="${person}" method="post">
             <div>
                 <div class="row">
                     <div class="col-xs-12 col-6">
@@ -87,7 +87,7 @@
         </div></div>
             </div>
             <br/>
-            <button class="btn btn-danger" type="submit">Add new person </button>
+            <button class="btn btn-danger" type="submit">Edit person </button>
             <a href="/Persons"><button type="button" class="btn btn-info">Go back</button></a>
         </form>
     </div>

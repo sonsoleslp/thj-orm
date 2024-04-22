@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Enrollment system</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container"> 
+        <h1>List of courses</h1> 
+        <a href="./Courses/new"><button class="btn btn-warning">Add new course</button></a>
+        <a href="/"><button type="button" class="btn btn-info">Go back</button></a>  
+        <br/><br/>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID Number</th>
+                    <th>Name</th>
+                    <th>Credits</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each = "course: ${Courses}">
+
+                    <td th:text="${course.id}"></td>
+                    <td th:text="${course.name}"></td>
+                    <td th:text="${course.credits}"></td>
+                    <td th:text="${course.type}"></td>
+                    <td>
+                        <a th:href="@{/Courses/edit/{id} (id=${course.id})}" class="btn btn-success">Edit</a>
+                        <form th:action ="@{/Courses/delete/{id} (id=${course.id})}" th:object="${course}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+    </body>
+</html>

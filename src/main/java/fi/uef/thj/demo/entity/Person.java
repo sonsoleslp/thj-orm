@@ -1,10 +1,16 @@
 package fi.uef.thj.demo.entity;
 
 import java.sql.Date;
+import java.util.Set;
+
+import org.springframework.core.style.ToStringCreator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +25,6 @@ public class Person {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="ssn", nullable = false)
-    private String ssn;
-    
     @Column(name="name", nullable = false)
     private String name;
     
@@ -46,10 +49,9 @@ public class Person {
     @Column(name="role", nullable = false)
     private Role role;
 
-    public Person(Long id, String ssn, String name, String surname, String city, String address, String phone,
+    public Person(Long id, String name, String surname, String city, String address, String phone,
     Date birthdate, Gender gender, Role role) {
         this.id = id;
-        this.ssn = ssn;
         this.name = name;
         this.surname = surname;
         this.city = city;
@@ -61,9 +63,6 @@ public class Person {
     }
     public Long getId() {
         return id;
-    }
-    public String getSsn() {
-        return ssn;
     }
     public String getName() {
         return name;
@@ -117,10 +116,22 @@ public class Person {
     public void setRole(Role role) {
         this.role = role;
     }
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    @ManyToMany()
+    @JoinTable(name = "enrollments", joinColumns = @JoinColumn(name = "student_id"), 
+        inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<Course> enrolledCourses;
+
+    public void setEnrolledCourses(Set<Course> enrolledStudents) {
+        this.enrolledCourses = enrolledCourses;
+    }
+
+    public Set<Course> getEnrolledCourses() {
+        return enrolledCourses;
+    }
+
+
 }   

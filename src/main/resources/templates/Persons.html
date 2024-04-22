@@ -5,18 +5,19 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Enrollment system</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/solar/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
     <script src='main.js'></script>
 </head>
 <body>
     <div class="container"> 
         <h1>List of persons</h1> 
-        <a href="./Persons/new"><button class="btn btn-warning">Add new person</button></a><br/><br/>
+        <a href="./Persons/new"><button class="btn btn-warning">Add new person</button></a>
+        <a href="/"><button type="button" class="btn btn-info">Go back</button></a>
+        <br/><br/>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID Number</th>
-                    <th>SSN</th>
                     <th>First Name</th>
                     <th>Last name</th>
                     <th>City</th>
@@ -25,13 +26,13 @@
                     <th>Birthdate</th>
                     <th>Gender</th>
                     <th>Role</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each = "person: ${Persons}">
 
                     <td th:text="${person.id}"></td>
-                    <td th:text="${person.ssn}"></td>
                     <td th:text="${person.name}"></td>
                     <td th:text="${person.surname}"></td>
                     <td th:text="${person.city}"></td>
@@ -40,6 +41,13 @@
                     <td th:text="${person.birthdate}"></td>
                     <td th:text="${person.gender}"></td>
                     <td th:text="${person.role}"></td>
+                    <td>
+                        <a th:href="@{/Persons/edit/{id} (id=${person.id})}" class="btn btn-success">Edit</a>
+                        <a th:href="@{/Persons/enroll/{id} (id=${person.id})}" class="btn btn-info">Enroll</a>
+                        <form th:action ="@{/Persons/delete/{id} (id=${person.id})}" th:object="${person}" method="post"style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
 
             </tbody>

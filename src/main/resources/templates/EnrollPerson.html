@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Enrollment system</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://bootswatch.com/5/flatly/bootstrap.min.css'>
+ 
+</head>
+<body>
+    <div class="container"> 
+        <h1>Edit person</h1> 
+        <form th:action ="@{/Persons/enroll/{id} (id=${person.id})}" th:object="${person}" method="post">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID Number</th>
+                        <th>Name</th>
+                        <th>Credits</th>
+                        <th>Type</th>
+                        <th>Enrolled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each = "course: ${enrolledCourses}">
+    
+                        <td th:text="${course.id}"></td>
+                        <td th:text="${course.name}"></td>
+                        <td th:text="${course.credits}"></td>
+                        <td th:text="${course.type}"></td>
+                        <td>
+                            <input type="checkbox" name="enrolledCourses" th:value="${course.id}" th:checked="${person.enrolledCourses.contains(course)}" />
+                        </td>
+                              
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            <button class="btn btn-danger" type="submit">Update enrollment </button>
+            <a href="/Persons"><button type="button" class="btn btn-info">Go back</button></a>
+        </form>
+    </div>
+</body>
+</html>
