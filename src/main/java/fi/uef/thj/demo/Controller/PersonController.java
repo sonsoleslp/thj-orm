@@ -31,10 +31,6 @@ public class PersonController {
 
     @PostMapping("/Persons")
     public String savePerson(@ModelAttribute("person")Person person){
-        System.out.println(person.getAddress());
-        System.out.println("SSSSSSS SSSSSSS SSSSSSS SSSSSSS");
-        System.out.println("SSSSSSS SSSSSSS SSSSSSS SSSSSSS");
-        
         personService.savePerson(person);
         return "redirect:/";
     }
